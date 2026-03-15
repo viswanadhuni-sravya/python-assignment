@@ -1,0 +1,63 @@
+class MyMath:
+
+    def calculate(self, operation, n):
+
+        if operation == "sum":
+            result = sum(range(1, n+1))
+            print("Sum of first", n, "natural numbers:", result)
+
+        elif operation == "prime":
+            print("First", n, "Prime Numbers:")
+            count = 0
+            num = 2
+            while count < n:
+                for i in range(2, num):
+                    if num % i == 0:
+                        break
+                else:
+                    print(num, end=" ")
+                    count += 1
+                num += 1
+            print()
+
+        elif operation == "fibonacci":
+            a, b = 0, 1
+            print("Fibonacci Series:")
+            for i in range(n):
+                print(a, end=" ")
+                a, b = b, a + b
+            print()
+
+        elif operation == "factorial":
+            fact = 1
+            for i in range(1, n+1):
+                fact *= i
+            print("Factorial:", fact)
+
+        else:
+            print("Invalid Operation")
+
+
+# Main Program
+math_tool = MyMath()
+
+while True:
+    print("\n1.Sum  2.Prime  3.Fibonacci  4.Factorial  5.Exit")
+    choice = int(input("Enter choice: "))
+
+    if choice == 5:
+        break
+
+    n = int(input("Enter value of n: "))
+
+    if choice == 1:
+        math_tool.calculate("sum", n)
+
+    elif choice == 2:
+        math_tool.calculate("prime", n)
+
+    elif choice == 3:
+        math_tool.calculate("fibonacci", n)
+
+    elif choice == 4:
+        math_tool.calculate("factorial", n)
