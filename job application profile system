@@ -1,0 +1,70 @@
+class PersonInfo:
+    def __init__(self, name, dob, contact, email):
+        self.name = name
+        self.dob = dob
+        self.contact = contact
+        self.email = email
+
+    def display_personal(self):
+        print("Name:", self.name)
+        print("DOB:", self.dob)
+        print("Contact:", self.contact)
+        print("Email:", self.email)
+
+
+class Education(PersonInfo):
+    def __init__(self, name, dob, contact, email, degree, university, year, cgpa):
+        super().__init__(name, dob, contact, email)
+        self.degree = degree
+        self.university = university
+        self.year = year
+        self.cgpa = cgpa
+
+    def display_education(self):
+        print("Degree:", self.degree)
+        print("University:", self.university)
+        print("Year:", self.year)
+        print("CGPA:", self.cgpa)
+
+
+class Experience(Education):
+    def __init__(self, name, dob, contact, email, degree, university, year, cgpa,
+                 company, role, years, skills):
+        super().__init__(name, dob, contact, email, degree, university, year, cgpa)
+        self.company = company
+        self.role = role
+        self.years = years
+        self.skills = skills
+
+    def display_experience(self):
+        print("Company:", self.company)
+        print("Job Role:", self.role)
+        print("Experience:", self.years, "years")
+        print("Skills:", self.skills)
+
+
+class CandidateProfile(Experience):
+    def display_profile(self):
+        self.display_personal()
+        self.display_education()
+        self.display_experience()
+
+        if self.years > 5:
+            print("Eligible for: Senior Role")
+        else:
+            print("Eligible for: Junior Role")
+
+        print("--------------------------")
+
+
+# Main Program
+c1 = CandidateProfile("Arjun", "12-06-1998", "9876543210", "arjun@mail.com",
+                      "B.Tech", "JNTU", 2020, 8.5,
+                      "Infosys", "Software Engineer", 6, "Python, AI")
+
+c2 = CandidateProfile("Neha", "05-03-2000", "9876540000", "neha@mail.com",
+                      "B.Tech", "AU", 2022, 8.9,
+                      "TCS", "Developer", 3, "Java, SQL")
+
+c1.display_profile()
+c2.display_profile()
